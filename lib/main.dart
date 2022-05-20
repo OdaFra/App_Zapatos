@@ -11,8 +11,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Shoes App',
-        home: ZapatoDescPage()
-        //ZapatosPage()
-        );
+        home:
+            //ZapatoDescPage()
+            ZapatosPage());
   }
 }
