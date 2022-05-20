@@ -15,7 +15,22 @@ class ZapatosPage extends StatelessWidget {
           const SizedBox(
             height: 25,
           ),
-          ZapatoSizePage(),
+          Expanded(
+            child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              child: Column(
+                children: [
+                  ZapatoSizePage(),
+                  const ZapatosDescripcionPage(
+                    titulo: 'Nike Air Max 720',
+                    descripcion:
+                        "The Nike Air Max 720 goes bigger than ever before with Nike's taller Air unit yet, offering more air underfoot for unimaginable, all-day comfort. Has Air Max gone too far? We hope so.",
+                  )
+                ],
+              ),
+            ),
+          ),
+          AgregarCarrtitoBotton(monto: 180.0)
         ],
       ),
     );
