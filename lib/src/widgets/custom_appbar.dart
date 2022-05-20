@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomAppBaPage extends StatelessWidget {
-  final String? texto;
+  final String texto;
 
   CustomAppBaPage({@required this.texto});
 
