@@ -1,3 +1,4 @@
+import 'package:app_zapatos/src/helpers/helpers.dart';
 import 'package:flutter/material.dart';
 
 import 'package:app_zapatos/src/widgets/custom_widgets.dart';
@@ -5,6 +6,7 @@ import 'package:app_zapatos/src/widgets/custom_widgets.dart';
 class ZapatosPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    cambiarStatusDark();
     return Scaffold(
       body:
           //ZapatoSizePage(),

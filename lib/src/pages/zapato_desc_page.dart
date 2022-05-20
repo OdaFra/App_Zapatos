@@ -1,11 +1,15 @@
+import 'package:app_zapatos/src/helpers/helpers.dart';
+import 'package:app_zapatos/src/model/zapato_model.dart';
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/custom_widgets.dart';
 
 class ZapatoDescPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    cambiarStatusLigth();
     return Scaffold(
         body: Column(
       children: [
@@ -19,6 +23,7 @@ class ZapatoDescPage extends StatelessWidget {
                 child: FloatingActionButton(
                   backgroundColor: Colors.transparent,
                   onPressed: () {
+                    cambiarStatusDark();
                     Navigator.pop(context);
                   },
                   // ignore: sort_child_properties_last
@@ -110,10 +115,19 @@ class _ColoresYmas extends StatelessWidget {
           Expanded(
               child: Stack(
             children: [
-              Positioned(left: 90, child: _BotonColor(Color(0xffC6D642), 4)),
-              Positioned(left: 60, child: _BotonColor(Color(0xffFFAD29), 3)),
-              Positioned(left: 30, child: _BotonColor(Color(0xff2099f1), 2)),
-              _BotonColor(Color(0xff364d56), 1),
+              Positioned(
+                  left: 90,
+                  child: _BotonColor(
+                      Color(0xffC6D642), 4, 'assets/imgs/verde.png')),
+              Positioned(
+                  left: 60,
+                  child: _BotonColor(
+                      Color(0xffFFAD29), 3, 'assets/imgs/amarillo.png')),
+              Positioned(
+                  left: 30,
+                  child: _BotonColor(
+                      Color(0xff2099f1), 2, 'assets/imgs/azul.png')),
+              _BotonColor(Color(0xff364d56), 1, 'assets/imgs/negro.png'),
             ],
           )),
           // const Spacer(),
@@ -132,19 +146,26 @@ class _ColoresYmas extends StatelessWidget {
 class _BotonColor extends StatelessWidget {
   final Color color;
   int index;
-  _BotonColor(this.color, this.index);
+  final String urlImagen;
+  _BotonColor(this.color, this.index, this.urlImagen);
 
   @override
   Widget build(BuildContext context) {
     return FadeInLeft(
-      delay: Duration(milliseconds: index = 200),
+      delay: Duration(milliseconds: index = 100),
       duration: const Duration(milliseconds: 500),
-      child: Container(
-        width: 45,
-        height: 45,
-        decoration: BoxDecoration(
-          color: color,
-          shape: BoxShape.circle,
+      child: GestureDetector(
+        onTap: () {
+          final zapatoModel = Provider.of<ZapatoModel>(context, listen: false);
+          zapatoModel.assetImage = urlImagen;
+        },
+        child: Container(
+          width: 45,
+          height: 45,
+          decoration: BoxDecoration(
+            color: color,
+            shape: BoxShape.circle,
+          ),
         ),
       ),
     );
