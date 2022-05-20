@@ -1,21 +1,34 @@
 import 'package:flutter/material.dart';
 
 class ZapatoSizePage extends StatelessWidget {
+  final bool fullScreen;
+
+  const ZapatoSizePage({this.fullScreen = false});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+      padding: EdgeInsets.symmetric(
+        horizontal: fullScreen ? 5 : 25,
+        vertical: fullScreen ? 25 : 0,
+      ),
       child: Container(
         width: double.infinity,
-        height: 430,
+        height: fullScreen ? 400 : 430,
         decoration: BoxDecoration(
-          color: Color(0xffFFCF53), //Colors.indigo,
-          borderRadius: BorderRadius.circular(50),
-        ),
+            color: const Color(0xffFFCF53), //Colors.indigo,
+            borderRadius: (!fullScreen)
+                ? BorderRadius.circular(50)
+                : const BorderRadius.only(
+                    bottomLeft: Radius.circular(50),
+                    bottomRight: Radius.circular(50),
+                    topLeft: Radius.circular(40),
+                    topRight: Radius.circular(40),
+                  )),
         child: Column(
           children: [
             _ZapatosConSombras(),
-            _ZapatosTallas(),
+            if (!fullScreen) _ZapatosTallas(),
           ],
         ),
       ),
