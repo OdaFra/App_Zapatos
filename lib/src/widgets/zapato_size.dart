@@ -13,7 +13,58 @@ class ZapatoSizePage extends StatelessWidget {
           borderRadius: BorderRadius.circular(50),
         ),
         child: Column(
-          children: [_ZapatosConSombras()],
+          children: [
+            _ZapatosConSombras(),
+            _ZapatosTallas(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ZapatosTallas extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: const [
+          _TallaZapatosCaja(7),
+          _TallaZapatosCaja(7.5),
+          _TallaZapatosCaja(8),
+          _TallaZapatosCaja(8.5),
+          _TallaZapatosCaja(9),
+          _TallaZapatosCaja(9.5),
+        ],
+      ),
+    );
+  }
+}
+
+class _TallaZapatosCaja extends StatelessWidget {
+  final double numero;
+
+  const _TallaZapatosCaja(this.numero);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      width: 45,
+      height: 45,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(),
+          ]),
+      child: Text(
+        '${numero.toString().replaceAll('.0', '')}',
+        style: const TextStyle(
+          color: Color(0xffF1a23a),
+          fontSize: 16,
         ),
       ),
     );
