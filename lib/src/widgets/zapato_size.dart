@@ -26,11 +26,35 @@ class _ZapatosConSombras extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(50.0),
       child: Stack(
-        children: const [
-          Image(
+        children: [
+          Positioned(
+            bottom: 20,
+            right: 0,
+            child: _ZapatosSombra(),
+          ),
+          const Image(
             image: AssetImage('assets/imgs/azul.png'),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _ZapatosSombra extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Transform.rotate(
+      angle: -0.5,
+      child: Container(
+        width: 230,
+        height: 120,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(100),
+          boxShadow: const [
+            BoxShadow(color: Color(0xFFEAA14E), blurRadius: 40),
+          ],
+        ),
       ),
     );
   }
