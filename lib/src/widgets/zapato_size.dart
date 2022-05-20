@@ -14,7 +14,7 @@ class ZapatoSizePage extends StatelessWidget {
       ),
       child: Container(
         width: double.infinity,
-        height: fullScreen ? 400 : 430,
+        height: fullScreen ? 390 : 430,
         decoration: BoxDecoration(
             color: const Color(0xffFFCF53), //Colors.indigo,
             borderRadius: (!fullScreen)
